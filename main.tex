@@ -1,0 +1,75 @@
+\documentclass{article} % You can change this to article, report, etc.
+
+\usepackage{acro}
+\usepackage{custom} % Adding style ...
+\input{tools/packs.tex} % Adding Packages ...
+\input{tools/acro.tex}  % Include acronyms file.
+
+
+
+\bibliographystyle{unsrt}
+
+\input{res/tables/debtabs.tex} % Include tables file.
+
+%%% COUNTERS %%%
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+%%% HYPERLINK ACRONYMS %%%
+\acsetup{make-links}
+
+\newcommand{\settocfooter}{
+    \fancyhf{} % Clear all header and footer fields
+    \rfoot{\thepage{}}
+}
+
+\newcommand{\resetfooter}{
+    \fancyhf{} % Clear all header and footer fields
+    \lfoot{Chapter \leftmark}
+    \rfoot{\thepage{}}
+}
+
+
+
+% % Title and author information
+% \title{Your Project Title}
+% \author{Author Name}
+% \date{\today}
+
+%%%   DOCUMENT   %%%
+\begin{document}
+    \input{res/tables/tables.tex}
+    %%%   TITTLE   %%%
+    % \maketitle
+    \input{pre/cover.tex}
+    %%%   CONTENTS   %%%
+    \settocfooter
+    \newpage
+    \tableofcontents
+    \newpage
+    \acuseall
+    \printacronyms
+    \newpage
+    \listoffigures
+    \newpage
+    \listoftables
+    %%%   REVISION HISTORY   %%%
+    \newpage
+    \input{pre/revision.tex}
+    % Chapters
+    \resetfooter
+    \include{sections/1_introduction}
+    \include{sections/2_thermalreqs}
+    \include{sections/3_thermalmargins}
+    \include{sections/4_worsthotcoldcases}
+    \include{sections/5_simulationanalisys}
+    \include{sections/5.2_simulationanalysisGLs}
+
+    
+    % Bibliography
+    \bibliography{tools/refs}
+
+
+
+
+\end{document}

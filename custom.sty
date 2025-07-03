@@ -1,0 +1,35 @@
+% Custom style definitions
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{custom}[Custom style]
+
+% Example of custom commands or environments
+\newcommand{\example}[1]{\textbf{#1}}
+% Change the default font to sans-serif
+\renewcommand{\familydefault}{\sfdefault}
+% Configure tocloft for dots in the table of contents
+% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+%%%% PAGE STYLE %%%%%
+\setlength{\headheight}{46.15pt} % Adjust this value as needed
+\setlength{\headsep}{10pt}     % Adjust this value as needed
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[height=1.2cm]{res/img/0_cover/upclogo.png}}
+\rhead{\includegraphics[height=1.2cm]{res/img/0_cover/pocat-lektron.png}}
+
+
+
+
+\renewcommand{\footrulewidth}{0.4pt}
+%\futurelet\TMPfootrule\def\footrule{{\color{upcorange}\TMPfootrule}}
+\futurelet\TMPfootrule\def\footrule{{\color{gray!80}\TMPfootrule}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
+%\color{upcorange}\leaders\hrule height \headrulewidth\hfill}}
+\color{gray!80}\leaders\hrule height \headrulewidth\hfill}}
+%\renewcommand*\ShowFrameColor{\color{red}}
+\renewcommand{\familydefault}{\sfdefault}

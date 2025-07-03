@@ -1,0 +1,175 @@
+\section{Worst Hot and Cold Case Definition}
+
+\subsection{External Heating Environment}
+\textsuperscript{Po}Cat-2 and \textsuperscript{Po}Cat-3 are expected
+to be launched together, from a yet to define launcher. They will perform,
+ideally, a polar or quasipolar orbit with near-zero eccentricity. 
+In table \ref{tab::orbit_params} the most critical external heating 
+environment orbit parameters taken in the analyses present in this document
+ (unless otherwise specified).
+
+ \paragraph{}
+ Do note that as of the latest revision of this document the selected launcher and
+ final orbit parameters are still an unknown matter. Therefore, within reasonable bounds,
+ the calculations will be presented considering the extremal ranges of these boundary
+ conditions. 
+
+ \begin{table}[H]
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        Perigee height             & 450--500 km     \\
+        Eccentricity ($e$)         & 0       \\
+        Inclination ($i$)          & 80--100       \\
+        Estimated launch date      & 2026--Q2        \\
+        \bottomrule
+    \end{tabular}
+    \caption{External heating environment orbit parameters.}
+    \label{tab::orbit_params}
+\end{table}
+
+Extreme hot and cold heating environments have been defined in order to envelop all possible cases in between.
+Table \ref{tab:heating_environments} summarizes the design hot and cold environments where extreme and less pessimistic values suggested 
+in RD03 (2-$\sigma$) have been taken respectively. In this table, the \textbf{solar flux} maximum 
+and minimum taken values have been those corresponding to the winter and summer solstices respectively as specified in RD03.
+
+\paragraph{}
+
+Regarding the \textbf{Earth albedo} and the \textbf{Earth Infrared}, values from RD03 have been taken, using a 2-$\sigma$ margin. The time
+period taken is of 90 minutes, which approximately coincides with orbit time, neglecting variations on lower time scales. The appropiate 
+non-Lambertian corrections have been applied as specified in the reference document.
+
+\paragraph{}
+
+\textbf{The duration of the eclipses} can also have a high impact on the maximum and minimum temperatures reached by 
+the satellite during an orbit. The most extreme cases (i.e., the shortest and longest eclipse times) have been 
+considered for the orbit inclination shown in Table~3. To this aim, the so-called \textbf{orbit beta angle} $\beta$ 
+has been defined for each case as the minimum angle between the orbit plane and the solar vector. For the cold case,
+the beta angle is 0$^\circ$ since the longest eclipse occurs when the orbit plane is parallel to the Ecliptic. As for
+the hot case, the shortest eclipse occurs when the value of $\beta$ is closest to $\pm$90$^\circ$. Since the Earth 
+axial tilt ($\epsilon_E$) is 23.44$^\circ$, the maximum beta angle can be obtained as the sum of the Earth tilt angle 
+and the spacecraft orbit inclination as:
+
+\begin{equation}
+    \beta_{\text{max}} = \varepsilon_E + i
+\end{equation}
+
+Despite this, due to the inclination being yet unknown, the most extreme values are taken.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Heating Environment} & \textbf{Solar Irradiance (W/m$^2$)} & \textbf{Earth Albedo} & \textbf{Earth IR (W/m$^2$)} & \textbf{$\beta$ ($^\circ$)} \\
+        \midrule
+        Hot Case             & 1414 & 0.55  & 219 & 90 \\
+        Cold Case            & 1322 & 0.22  & 238 & 0     \\
+        Extreme Hot Case   & 1414 & 0.8 & 261 & 90 \\
+        Extreme Cold Case  & 1322 & 0.05 & 189 & 0 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Design hot and cold external heating environments}
+    \label{tab:heating_environments}
+\end{table}
+
+It needs to be noted that the later values presented in Table \ref{tab:heating_environments} represent extreme (eventually non-physically possible) situations aiming to envelope the hottest and the coldest possible heating environments the spacecraft will encounter. The non-extreme parameters of the table will be the ones used to perform the thermal analysis of the spacecraft.
+
+
+\subsection{Satellite Internal Heat Dissipation and Attitude}
+
+
+The satellite operating modes defined, from the internal heat dissipation point of view, are the following:
+
+\begin{itemize}
+    \item \textbf{Standby (Sb)}: Period before the satellite is turned on. All subsystems are inactive.
+    \item \textbf{Released (R)}: After the standby period, the satellite is turned on, with the EPS and OBC as the only active subsystems.
+    \item \textbf{Pre-detumbling (PD)}: Once the COMMS antenna haas been deployed, the EPS, OBC, COMMS and AOCS (only determination for telemetry) are active. The COMMS subsystem is transmitting data with a ratio of 1\% of the orbit time.
+    \item \textbf{Detumbling (D)}: Same as pre-detumbling state, with the magnetorquers operating.
+    \item \textbf{Detumbled (Dd)}: Once the satellite is detumbled, the AOCS is keeping the desired attitude. The COMMS subsystem is transmitting data with a ratio of 1\% of the orbit time.
+    \item \textbf{Nominal (N)}: Satellite is fully operative. The payload is executed a yet to define number of times per orbit. The COMMS subsystem is transmitting data with a ratio of 1\% of the orbit time.
+    \item \textbf{Contingency (C)}: When the batteries fall below a certain value. In this mode, some functionalities of the flight software are disabled (P/L, Nadir, FSS).
+    \item \textbf{Survival (S)}: After an unexpected anomaly in battery levels, the satellite enters this mode. Transmissions are ceased.
+    \item \textbf{Satellite Off (OFF)}: Satellite turned off during its operation due to unexpected events. All subsystems are inactive.
+\end{itemize}
+
+As for the satellite attitude, the following states have been considered:
+
+\begin{itemize}
+    \item \textbf{Nadir Pointing (NP)}: Satellite -Z face pointing towards Earth center. Desired (ideal) attitude of the spacecraft achieved by the AOCS during its operation.
+    \item \textbf{Random Rotation (RR)}: Satellite randomly rotating about its three axes (e.g., during the deployment).
+    \item \textbf{Zenith Pointing (ZP)}: Satellite +Z face pointing towards Earth center (-Z face pointing towards zenith). Critical situation considered, as a worst-case assumption.
+\end{itemize}
+
+The mean power consumption of each satellite operating mode, and the satellite attitude state in which they can occur, are summarized in Table \ref{tab:satellite_modes}.
+Mean power consumption values have been extracted from the power budget yet to be presented.
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{Operating Mode} & \textbf{Power Consumption (mW)} & \textbf{Attitude State} & \textbf{COMMS Config.} \\
+        \midrule
+        \multicolumn{4}{c}{\textbf{Commissioning Phase}} \\
+        Standby (Sb)        & 0 & RR             & Stowed   \\
+        Released (R)        & 74 & RR             & Stowed   \\
+        Pre-detumbling (PD) & 497 & RR             & Deployed   \\
+        Detumbling (D)      & 995 & RR             & Deployed   \\
+        Detumbled (Dd)      & 497 & NP     & Deployed   \\
+        \midrule
+        \multicolumn{4}{c}{\textbf{Operational Phase}} \\
+        Nominal (N)         & 497 & NP        & Deployed \\
+        Contingency (C)     & 77 & NP      & Deployed \\
+        Survival (S)        & 46 & NP       & Deployed \\
+        Satellite Off (OFF) & 0 & NP       & Deployed \\
+        \bottomrule
+    \end{tabular}
+    \caption{Satellite operating modes, mean power consumption and attitude states.}
+    \label{tab:satellite_modes}
+\end{table}
+Do note that, after the release, the spacecraft will enter an initial (Init) state (Released) where it'll begin the deployment
+process of the COMMS antenna, only entering the Nominal mode after communication has been established with the 
+Ground Station.
+
+\paragraph{}
+
+In this thermal analysis only worst hot and cold cases have been studied, enveloping all possible cases in between.
+From a thermal point of view, the RR attitude state is less critical than the NP and ZP states; since the satellite
+is constantly rotating, the heat flux is expected to be averaged between the different faces.
+Finally, it is not clear whether the deployed or the stowed configuration corresponds to the worst hot and cold case. 
+Despite this, due to the limited size of the COMMS Antenna, it is expected to find a non significative difference, and,
+therefore, this analysis will only evaluate the deployed case.
+\paragraph{}
+From the satellite modes during the operational phase, only Nominal and Survival modes will be analyzed, since these are the modes 
+with the higher and lower power consumption respectively. It is expected that the Survival mode will be of most criticality due to
+the shutting off of the battery heater, in favour of a lower power consumption.
+
+\paragraph{}
+From the attitude point of view, the NP state will be analyzed. The ZP state might be considered in future analysis if requiered. This is
+due to the fact that this mode is not expected to present a relevant probability of occurance.
+
+\subsection{Worst Hot and Cold Cases}
+
+Having defined the hot and cold heating environments and the hot and cold satellite internal heat dissipation and attitude
+cases, the overall worst cases are summarized in Table \ref{tab:worst_cases}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        & \textbf{Operating Mode} & \textbf{Attitude State} & \textbf{COMMS Config.} & \textbf{Heating Environment} \\
+        \midrule
+        \multicolumn{5}{c}{\textbf{Prior to Detumbling}} \\
+        Worst Hot Case  & D & RR & Deployed & Hot Case  \\
+        Worst Cold Case & Sb  & RR & Deployed & Cold Case \\
+        \midrule
+        \multicolumn{5}{c}{\textbf{Operational}} \\
+        Worst Hot Case  & N  & NP & Deployed & Hot Case  \\
+        Worst Cold Case & SS & NP & Deployed & Cold Case \\
+        \bottomrule
+    \end{tabular}
+    \caption{Worst Hot and Cold Cases.}
+    \label{tab:worst_cases}
+\end{table}

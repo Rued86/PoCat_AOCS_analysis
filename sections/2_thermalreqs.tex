@@ -1,0 +1,159 @@
+\section{Thermal-Design Requirements}
+
+The Thermal Control System (TCS) requirements for $^{\text{Po}}$Cat 2/3 S/C 
+affecting the thermal design are listed below:
+
+\begin{itemize}
+    \item \textbf{TCS-001} \\
+    The TCS shall ensure that each hardware component works in its operational
+     temperature range during all mission phases (until the end of the operating
+      lifetime).
+    
+    \item \textbf{TCS-002} \\
+    The TCS shall control the spacecraft temperature using passive and active
+     mechanisms.
+    
+    \item \textbf{TCS-003} \\
+    The TCS should be designed in accordance with ''Space engineering: 
+    Thermal control general requirements'' [RD01].
+    
+    \item \textbf{TCS-004} \\
+    The satellite acceptance margin shall be 5$^\circ$C.
+    
+    \item \textbf{TCS-005} \\
+    The TCS design shall be conceived using Earth and sun the natural 
+    environment specified in [RD01].
+    
+    \item \textbf{TCS-006} \\
+    The OBC shall provide the satellite housekeeping data to the TCS 
+    in order to monitor and control the satellite temperature.
+    
+    \item \textbf{TCS-007} \\
+    The TCS design shall make use of materials and design features 
+    compatible with the environmental factors expected during all 
+    mission phases including possible effects and degradations.
+    
+    \item \textbf{TSC-008} \\
+    The satellite qualification margin shall be 5$^\circ$C.
+    
+    \item \textbf{TSC-009} \\
+    An uncertainty margin of 10$^\circ$C shall be applied to 
+    predicted temperatures.
+\end{itemize}
+
+The objective then, of this document, will be to provide, as accurately as possible,
+information in regards to the fulfulling of the aforementioned requirements. Do acklowledge
+that the results presented do not, by themselves, verify the requirements and call for
+the need of experimental procedures (TVAC Testing).
+
+\newpage
+
+\subsection{Component Temperature Ranges}
+
+In order to help define and verify requirements related to the temperature of individual
+components, and the full system, the information provided in the datasheets of each component
+is compiled and presented in this subsection.
+\paragraph{}
+
+The Non-Operational Temperature Ranges, constituting the temperatures where the part is safe to be stored,
+and the Operational Temperature Ranges, constituting the temperatures indicated by the manufacturer of guaranteed
+ performance, of all satellite subsystems most important components are shown in Table \ref{tab:table_3_10_2.1}:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lcccc}
+  \toprule
+  \textbf{Components} & \multicolumn{2}{c}{\textbf{Non-Operational Temperature Range}} & \multicolumn{2}{c}{\textbf{Operational Temperature Range}} \\ 
+  \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+                      & \textbf{Min} & \textbf{Max} & \textbf{Min} & \textbf{Max} \\ 
+  \midrule
+  \textbf{ADCS} & & & & \\
+  \midrule
+  LPV542              & -65          & 150          & -40          & 125          \\ 
+  IIM-42652           & -40          & 125          & -40          & 105          \\ 
+  MMC5983MA           & -55          & 125          & -40          & 105          \\ 
+  TMUX1108            & -65          & 150          & -40          & 125          \\ 
+  BD2606MVV           & -55          & 150          & -30          & 85           \\ 
+  \midrule
+  \textbf{Lateral boards} & & & & \\
+  \midrule
+  TCN75AOA            & -65          & 150          & -40          & 125          \\ 
+  Photodiodes          & -40          & 125          & -40          & 125          \\ 
+  \midrule
+  \textbf{EPS} & & & & \\
+  \midrule
+  SPV1040             & -40          & 150          & -40          & 125          \\ 
+  LTC4040             & -65          & 125          & -40          & 125          \\ 
+  DS2782              & -55          & 125          & -40          & 85           \\ 
+  ISL9120IR           & -65          & 150          & -40          & 85           \\ 
+  SIR424DP            & -55          & 150          & -55          & 150          \\ 
+  \midrule
+  \textbf{OBC \& COMMS} & & & & \\
+  \midrule
+  STM32L476           & -65          & 150          & -40          & 85           \\ 
+  BD2232G             & -55          & 150          & -40          & 85           \\ 
+  BGS12PL6E6327XTSA1  & -55          & 150          & -40          & 85           \\ 
+  FA-128\_32.0000MF20X-K5 & -40       & 125          & -40          & 85           \\ 
+  ABS09-32.768KHZ-7-T & -55          & 125          & -40          & 85           \\ 
+  ECS-120-18-33-JEM-TR3 & -55        & 125          & -20          & 70           \\ 
+  SX1262 RX \& TX     & -55          & 125          & -55          & 125          \\ 
+  \midrule
+  \textbf{Payload K - Band} & & & & \\
+  \midrule
+  HMC342             & -65          & 150          & -55          & 85           \\ 
+  BFHK-2582+         & -55          & 125          & -55          & 125          \\ 
+  HMC260             & -65          & 150          & -55          & 85           \\ 
+  HMC506LP4          & -65          & 150          & -40          & 85           \\ 
+  CY2-44+            & -65          & 150          & -40          & 85           \\ 
+  HMC516LC5          & -65          & 150          & -40          & 85           \\ 
+  HFCN-5500+         & -55          & 100          & -55          & 100          \\ 
+  CMD271P3           & -55          & 150          & -40          & 85           \\ 
+  LFCW-8000+         & -55          & 125          & -55          & 125          \\ 
+  SIM-14+            & -55          & 100          & -40          & 85           \\ 
+  HMC358MS8G         & -65          & 150          & -40          & 85           \\ 
+  LEE2-6+            & -65          & 150          & -40          & 85           \\ 
+  B39871B4316P810    & -40          & 85           & -40          & 85           \\ 
+  LT5537             & -65          & 125          & -40          & 85           \\ 
+  LT3048IDC-TRMPBF   & -65          & 150          & -40          & 125          \\ 
+  MIC2215-AAAYML-TR  & -65          & 150          & -40          & 125          \\ 
+  AD8224ACPZ-R7      & -65          & 130          & -40          & 125          \\ 
+  \bottomrule
+  \end{tabular}
+  \caption{NOTR and OTR of the most relevant components}
+  \label{tab:table_3_10_2.1}
+\end{table}
+
+\newpage
+
+In Table \ref{tab:optemplimits} the \ac{OTR} are grouped
+by subsystem, extracting from Table \ref{tab:table_3_10_2.1} the most limiting temperatures
+of the used components used, as all subsytems are in-house developed.
+Note that these are not the Design Temperature Ranges.
+
+In Section 3 the applied Qualification and Acceptance Thermal Margins are described
+and the Acceptance and Design Temperature Ranges are provided.
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{ccc}
+  \hline
+  \multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Subsystem\end{tabular}}} & \multicolumn{2}{c}{$\mathbf{Operational\ Temperature\ Range (^\circ C)}$} \\ \cline{2-3} 
+                                                                                           & \textbf{Min}                    & \textbf{Max}                    \\ \hline
+  EPS                                                                                      & -40                             & 85                              \\
+  AOCS                                                                                     & -30                             & 85                              \\
+  OBC/COMMS                                                                                & -20                             & 70                              \\
+  K-Band                                                                                   & -40                             & 85                              \\
+  L-Band                                                                                   & -40                             & 85                              \\
+  Top Board                                                                                & -40                             & 125                             \\
+  Lateral Boards                                                                           & -40                             & 125                             \\ 
+  Bottom Board                                                                             & -40                             & 85                              \\ \hline
+  Battery (Charge)                                                                         & 0                               & 45                              \\
+  Battery (Disharge)                                                                       & -20                             & 60                              \\ \hline           
+  \end{tabular}
+  \caption{Operational Temperature Limits by Subsystem.}
+  \label{tab:optemplimits}
+\end{table}
+
+Note that the \ac{OTR} of the battery is also provided in the table due to the criticality of its correct
+operation and its restrictive temperature ranges.

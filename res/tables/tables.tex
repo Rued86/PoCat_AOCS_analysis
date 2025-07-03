@@ -1,0 +1,83 @@
+%%% FILE WITH ALL TABLES DEFINITIONS %%%
+
+%%% EXAMPLE TABLE %%%
+\renewcommand{\Tabladeejemplo}{
+    \begin{table}[h]
+        \centering
+        \caption{Caption for the table.}
+        \label{tab:example_table}
+        \begin{tabularx}{\textwidth}{XXX} % Removed the extra brackets
+            \toprule
+            Column 1 & Column 2 & Column 3 \\ \midrule
+            Data 1 & Data 2 & Data 3 \\
+            Data 4 & Data 5 & Data 6 \\
+            \bottomrule
+        \end{tabularx}
+    \end{table}
+}
+
+%%% APPROVAL TABLE %%%
+\renewcommand{\approvaltable}{
+    \begin{center}
+        \begin{table}[ht]
+            \begin{tabularx}{\textwidth}{lXXX}
+            \toprule
+            \textbf{Title}        & \multicolumn{3}{l}{\textbf{FYS DRD and Guidelines}}   \\ \midrule
+            Issue Number & 1                      & Revision Number  & 0 \\ 
+            Author       &                        & Date             &   \\ 
+            Approved By  &                        & Date of Approval &   \\ 
+            \bottomrule
+            \end{tabularx}
+            \label{tab:approval}
+        \end{table}
+    \end{center}
+}
+
+%%% APPROVAL TABLE %%%
+\renewcommand{\changelogtable}{
+    \begin{center}
+        \begin{table}[ht]
+            \begin{tabularx}{\textwidth}{lXXX}
+            \toprule
+            Reason for change   & Issue Nr  & Revision Number   & Date  \\ \midrule
+            First release       & 1         & 0                 &       \\ 
+            Second release      & 2         & 0                 &       \\
+            \bottomrule
+            \end{tabularx}
+            \label{tab:change_log}
+        \end{table}
+    \end{center}
+}
+
+%%% APPROVAL TABLE %%%
+\renewcommand{\recordtable}{ 
+    \begin{center}
+        \begin{table}[ht]
+            \begin{tabularx}{\textwidth}{lXXX}
+            \toprule
+            \textbf{Issue Number}   & \multicolumn{3}{l}{\textbf{Revision Number}}  \\ \midrule
+            Issue Number            & 1         & Revision Number   & 0             \\ \midrule
+            Reason for change       & Date      & Pages             & Paragraph(s)  \\ \midrule
+            First release           &           &                   &               \\
+            Second release          &           &                   &               \\
+            \bottomrule
+            \end{tabularx}
+            \label{tab:change_record}
+        \end{table}
+    \end{center}
+}
+
+%%% DISTRIBUTION TABLE %%%
+\renewcommand{\distributiontable}{
+    \begin{center}
+        \begin{table}[ht]
+            \begin{tabularx}{\textwidth}{X}
+            \toprule
+            \textbf{Disclaimer} \\ \midrule
+            This document has been prepared for use by the Fly Your Satellite! PoCat Lektron team.\\
+            \textbf{This document shall be considered confidential and not to be distributed further without permission of ESA Education, and the authors.}   \\ \bottomrule
+            \end{tabularx}
+            \label{tab:distribution}
+        \end{table}
+    \end{center}
+}
