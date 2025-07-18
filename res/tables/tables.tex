@@ -81,3 +81,31 @@
         \end{table}
     \end{center}
 }
+
+%%% Table for the sensors and actuators %%%
+\renewcommand{\sensorsactuators}{
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{ll}
+            \hline
+            \textbf{Sensors}      & \textbf{Actuator}     \\ \hline
+            Gyroscope    & Magnetorquer \\
+            Photodiodes  &              \\
+            Magnetometer &              \\ \hline
+        \end{tabular}
+    \end{table}
+}
+%%% Table for the magnetorquer description %%%
+\renewcommand{\magnetorquercharacteristics}{
+    \begin{table}[htbp]
+    \centering
+        \begin{tabularx}{0.9\linewidth}{X c c c c}
+            \toprule
+            \textbf{Board} & \textbf{Turns} & \textbf{Max moment (A$\cdot$m$^2$)} & \textbf{Dimensions (mm$\times$mm)} & \textbf{Layers} \\
+            \midrule
+            Top & 42$\times$layer & $9.17 \times 10^{-4}$ & 32 $\times$ 32 & 4 \\
+            Bottom \& Lateral & 38$\times$layer & 0.0017 & 32 $\times$ 32 & 4 \\
+            \bottomrule
+        \end{tabularx}
+    \end{table}
+}
