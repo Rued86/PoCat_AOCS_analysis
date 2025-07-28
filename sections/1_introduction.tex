@@ -1,28 +1,9 @@
-\section*{Applicable Documents}
-
-\begin{table}[H]
-    \centering
-    \resizebox{\columnwidth}{!}{
-    \begin{tabular}{lll}
-        \hline
-        \textbf{Reference} & \textbf{Document Title} & \textbf{Issue/Release Date} \\
-        \hline
-        RD01 & ECSS-E-ST-31C Space Engineering & Issue 2, 2008/11/15 \\
-        RD02 & ECSS-E-HB-31-01 - Space Engineering - Thermal design handbook - Part 1 to 16 & multiple \\
-        RD03 & P. D.G. Gilmore, “Spacecraft Thermal Control Handbook: Fundamental Technologies”, ESA-TEC-MTT & 2002 \\
-        \hline
-    \end{tabular}
-    }
-\end{table}
-
-\newpage
-
 \section{Introduction}
-The $^{\text{Po}}$Cat-Lektron AOCS analysis includes a comprehensive simulation model to support the design,
-verification, and validation of the attitude and orbit control system for the $^{\text{Po}}$Cat-Lektron mission. 
-Developed at the UPC NanoSat Lab as part of the IEEE OpenPocketQube Kit initiative and selected for the ESA Fly 
-Your Satellite! program, the mission comprises two 1P PocketQubes equipped with L-band and K-band radiometers for 
-remote sensing and RFI monitoring.\\
+The $^{\text{Po}}$Cat-Lektron Attitude and Orbit Control System (AOCS) analysis includes a comprehensive simulation model to support the design,
+verification, and validation of the AOCS for the $^{\text{Po}}$Cat-Lektron mission. 
+Developed at the UPC NanoSat Lab (UPC NL) as part of the IEEE OpenPocketQube Kit (OPQK) initiative and selected for the ESA Fly 
+Your Satellite! (FYS) program, the mission comprises two 1P PocketQubes (PQ) equipped with L-band and K-band radiometers for 
+remote sensing and Remote Frequency Interference (RFI) monitoring.\\
 
 \noindent The simulation campaign evaluates key operational modes, such as Nadir Pointing and Detumbling, 
 assessing performance against mission requirements. Results demonstrate the impact of sensor noise and external disturbances, 
@@ -34,26 +15,26 @@ implementation of the AOCS in the $^{\text{Po}}$Cat-Lektron
 
 \subsubsection{Mission statement}
 
-The $^{\text{Po}}$Cat-Lektron is a mission resulting from the IEEE OpenPocketQube Kit initiative, 
-developed at the UPC NanoSat Lab. The mission has been selected in the 4th call of 
-the ESA Fly Your Satellite! (FYS) program. The mission analysis presented corresponds 
-to the $^{\text{Po}}$Cat-Lektron mission. It consist of two 1P PocketQubes, the PoCat-2 and the 
-PoCat-3, developed as a part of the IEEE OpenPocketQube Kit. This mission aims to 
-demonstrate the feasibility of PocketQube platforms for remote sensing applications.\cite{wiki}
+The $^{\text{Po}}$Cat-Lektron is a mission resulting from the OPQK initiative, 
+developed at the UPC NL. The mission has been selected in the 4th call of 
+the ESA FYS program. The mission analysis presented corresponds 
+to the $^{\text{Po}}$Cat-Lektron mission. It consist of two 1P PQs, the PoCat-2 and the 
+PoCat-3, developed as a part of the OPQK. This mission aims to 
+demonstrate the feasibility of PQ platforms for remote sensing applications.\cite{wiki}
 \paragraph{}
-The payloads on board of the PocketQubes are two passive radiometers to be use for 
+The payloads on board of the PQs are two passive radiometers to be use for 
 RFI purposes on K and L bands. Apart from the remote sensing nature of the mission, 
-this mission also aims to demonstrate the feasibility of the PocketQube platforms to 
-create, manage and join Federated Satellite Systems. To do so, the FSS Experiment 
+this mission also aims to demonstrate the feasibility of the PQ platforms to 
+create, manage and join Federated Satellite Systems (FSS). To do so, the FSS Experiment 
 will be reproduced as a part of the experiments of the mission.
 
 \subsubsection{Mission Objectives}
 
 \begin{itemize}
     \item \textbf{Demonstration of Scientific Viability:} Demonstrate the feasibility of 
-    conducting scientific missions using PocketQube platforms. To do so, the mission
+    conducting scientific missions using PQ platforms. To do so, the mission
     proposes collecting valuable RFI data through a K-Band and L-Band passive 
-    radiometers (One for each PocketQube). The payloads will monitor interferences on 
+    radiometers (One for each PQ). The payloads will monitor interferences on 
     these bands. This data will facilitate enhanced detection and the generation of
     heatmaps indicating RFI distribution across the globe. In this experiment we aim
     to obtain data on the K-Band to see the impact on the atmospheric water vapor 
@@ -61,16 +42,15 @@ will be reproduced as a part of the experiments of the mission.
     and Timing (PNT) signals.
 
     \item \textbf{Satellite Federation Concept:} To establish and demonstrate that 
-    PocketQube platforms can create, manage and join Federated Satellite System 
-    (FSS). This proof of concept for this resource-limited platforms is based on 
-    the reproduction of the FSS Experiment conducted at the UPC NanoSat Lab. The 
-    demonstration consist on create a federation between 2 PocketQubes, in order 
-    to download data. Previous missions such as the FSS-Cat from the UPC NanoSat 
-    Lab demonstrated the feasibility of this opportunistic collaboration using 6U 
-    CubSats.
+    PQ platforms can create, manage and join FSS. This proof of concept for this resource-limited platforms is based on 
+    the reproduction of the FSS Experiment conducted at the UPC NL. The 
+    demonstration consist on create a federation between 2 PQs, in order 
+    to download data. Previous missions such as the FSS-Cat from the UPC NL 
+    demonstrated the feasibility of this opportunistic collaboration using 6U 
+    CubSats (CS).
 
-    \item \textbf{Educational Development:}  As a mission developed at the UPC NanoSat
-     Lab, the mission is oriented for undergraduated students to gain experience and 
+    \item \textbf{Educational Development:}  As a mission developed at the UPC NL,
+     the mission is oriented for undergraduated students to gain experience and 
      get involved in real space missions. In addition, several Bachelor and Master 
      Thesis had been done from this project, apart from the academic papers that 
      this project has produced.

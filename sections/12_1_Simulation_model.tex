@@ -1,8 +1,8 @@
 \input{res/tables/tables.tex}
 \section{Simulation model}
-To assist the AOCS design, verification and validation, a simulation model using mathlab code has been used. The
-simulation is based on the Princeton Toolbox \cite{PrincetonToolbox}, which contains a set of functions and 
-simulations initially created for CubeSats, that has been adapted to the PocketQube.
+To assist the Attitude and Orbit Control System (AOCS) design, verification and validation, a simulation model using mathlab code has been used. The
+simulation is based on the Princeton Toolbox (PT) \cite{PrincetonToolbox}, which contains a set of functions and 
+simulations initially created for CubeSats, that has been adapted to the PocketQube (PQ).
 
 \subsection{PocketQube Model}
 The mission is formed by two PQs, one using an L-band Radiometer and the other using a K-band radiometer. To model the PQ, a 3 dimensional cube has
@@ -15,13 +15,13 @@ stowed.
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\linewidth]{res/img/3_simulation_performance/PQ model.png}
-        \caption{PocketQube 3D model}
+        \caption{PQ 3D model}
         \label{fig:PQmodel}
     \end{figure}
 
 \subsection{Environmental model and asumptions}
 
-\subsubsection{Reference framse}
+\subsubsection{Reference frames}
 \begin{itemize}
     \item \textbf{Earth Centered Inertial (ECI) frame:}\\
     The ECI frame is a global cartesian reference frame that has its origin at the centre of the
@@ -43,11 +43,11 @@ stowed.
     The Body frame is a global cartesian reference frame that has its origin at the centre of
     the PQ.
     \begin{itemize}
-        \item X axis aligned with the PocketQube width, parallel to the sliding plate and perpendicular
-        to the direction of insertion into the PocketQube deployer.
-        \item Y axis aligned with the PocketQube length, the direction of insertion into the
-        PocketQube deployer and completing the right handed reference frame.
-        \item Z axis aligned with the PocketQube height direction, pointing upwards from the
+        \item X axis aligned with the PQ width, parallel to the sliding plate and perpendicular
+        to the direction of insertion into the PQ deployer.
+        \item Y axis aligned with the PQ length, the direction of insertion into the
+        PQ deployer and completing the right handed reference frame.
+        \item Z axis aligned with the PQ height direction, pointing upwards from the
         sliding plate.
 
     \end{itemize}
@@ -100,7 +100,7 @@ The following external disturbances are considered in the simulation:
 
 As for the Orbit propagator in the simulation, firstly, the used equations or motion are the Cowell'
 form of the two body problem, using  disturbances. In addition, the integrator type used is the Runge-Kutta 4th order method.
-As for the propagation of the parameters, they are done in the Earth Centered Inertial (ECI) frame.\vspace{0.2em}
+As for the propagation of the parameters, they are done in the ECI frame.\vspace{0.2em}
 
 \noindent The parameters included in the initial vector for describing the state of the satellite at the begining of the simulation are:
 
@@ -113,7 +113,7 @@ As for the propagation of the parameters, they are done in the Earth Centered In
 
 \noindent Regarding the attitude representation of the satellite in the simulation, the mathematical expresion that will be used is the quaternion. During the
 simulation the quaternion that will be used is the one representing the rotation fromt he body frame to the ECI frame. However, at the time to 
-present the results the quaternion that will be used will be the one representing a rotation from the Local Vertical Local Horizontal (LVLH) frame to the ECI frame.
+present the results the quaternion that will be used will be the one representing a rotation from the LVLH frame to the ECI frame.
 
 \subsection{Sensor and actuator models}
 In this section all the models used for the sensors and for the actuators are described. It is assumed that all the sensors has been calibrated
@@ -185,7 +185,7 @@ The table below shows the characteristics of the magnetorquers used in the simul
 
 
 \subsection{Simulaton / model sampling times and frequencies}
-The simulation time used is 2 seconds which corresponds to 0.5 Hz. This is due to the fact that the on board computer (OBC) used in the PQ
+The simulation time used is 2 seconds which corresponds to 0.5 Hz. This is due to the fact that the On Board Computer (OBC) used in the PQ
 only has one thread to manage all the tasks, therefore, the sampling frequency has been chosen thinking in the worst case scenario. The 
 sampling time of the sensors is the same one as the simulation time.
 
@@ -195,7 +195,7 @@ In this section the simulation results of the two different operational modes of
 
 \subsection{Nadir Pointing Mode}
 
-The objective of the Nadir Pointing is to point the Payload located at the top board of the PocketQube towards the Earth, so that 
+The objective of the Nadir Pointing is to point the Payload located at the top board of the PQ towards the Earth, so that 
 the Payload can take measurements of the Earth. For this mode the following requirements have been defined: \vspace{1em}
 
 
@@ -216,7 +216,7 @@ The list below presents the different assumptions and aspects considered to perf
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\linewidth]{res/img/3_simulation_performance/Sat_groundtrack.png}
-            \caption{Ground track of the simulated PocketQube orbit}
+            \caption{Ground track of the simulated PQ orbit}
             \label{fig:GTrack}
         \end{figure}
 
@@ -339,7 +339,7 @@ The list below presents the different assumptions and aspects considered to perf
     \end{figure}
 
     Finally, the last plot of the sensors includes the measurements of all 6 photodiodes used in the satellite. 
-    Each axis of the PocketQube corresponds to the following number: 1 to +Z, 2 to -Z, 3 to +X, 4 to +Y,
+    Each axis of the PQ corresponds to the following number: 1 to +Z, 2 to -Z, 3 to +X, 4 to +Y,
     5 to -X and 6 to -Y.
     \begin{figure}[H]
         \centering
@@ -388,7 +388,7 @@ The list below presents the different assumptions and aspects considered to perf
 
     \item \textbf{Real angular Velocity}\\
     In the following plot it is shown the angular velocity propagated in each iteration of the simulation. In short
-    words it is the real angular velocity in which the satellite is rotating due to the torques affecting the PocketQube.
+    words it is the real angular velocity in which the satellite is rotating due to the torques affecting the PQ.
     
     \begin{figure}[H]
         \centering
@@ -436,8 +436,8 @@ The list below presents the different assumptions and aspects considered to perf
     \end{figure}
 
     \item \textbf{Attitude quaternion}\\
-    The following plot indicates the attitude quaternion of the PocketQube. The selected quaternion is the
-    one representing the rotation from the Local Vertical Local Horizontal (LVLH) frame to the body frame.
+    The following plot indicates the attitude quaternion of the PQ. The selected quaternion is the
+    one representing the rotation from the LVLH frame to the body frame.
     This quaternion is selected to show the performance of the Nadir Pointing mode, as the quaternion indicating that
     the PQ is pointing to the Nadir angle has a very simple representation, which is the quaternion [+-1, 0, 0, 0]. In the 
     plot can be observed that the scalar component (qs) of the quaternion of the PQ is de desired one. Nevertheless,
@@ -466,10 +466,10 @@ The proposed solution is the implementation of an Extended Kalman Filter (EKF) t
     \label{fig:AngleNadirY}
 \end{figure}
 
-\subsubsection{Nadir pointing using an External Kalman Filter for attitude determination}
+\subsubsection{Nadir pointing using an Extended Kalman Filter (EKF) for attitude determination}
 In consequence of the results obtained in the previous seconds, the proposed solution to achieve
-the requirement of the Payload is to implement an Extended Kalman Filter (EKF) to improve the attitude estimation. 
-The Extende Kalman Filter used is the one proposed in \cite{EKF}. This proposed EKF uses the manifold theory to update
+the requirement of the Payload is to implement an EKF to improve the attitude estimation. 
+The EKF used is the one proposed in \cite{EKF}. This proposed EKF uses the manifold theory to update
 the attitude quaternion, the covarianve matrix of the state and the angular velocity. Additionally, it uses measurements
 from the gyroscope and the magnetometer to update the state of the EKF.\\
 
@@ -561,7 +561,7 @@ In addition, the performance of the EKF is analysed and compared with the perfor
         \end{minipage}
     \end{figure}
 
-    Finally, the photodiode measurements are presented. As in the previous simulation, each axis of the PocketQube corresponds to the following number: 1 to +Z, 2 to -Z, 3 to +X, 4 to +Y,
+    Finally, the photodiode measurements are presented. As in the previous simulation, each axis of the PQ corresponds to the following number: 1 to +Z, 2 to -Z, 3 to +X, 4 to +Y,
     5 to -X and 6 to -Y.
     \begin{figure}[H]
         \centering
@@ -638,7 +638,7 @@ In addition, the performance of the EKF is analysed and compared with the perfor
     \end{figure}
 
     \item \textbf{Attitude quaternion}\\
-    In this section the attitude quaternion of the PocketQube estimated by the EKF is presented. A comparative between the 
+    In this section the attitude quaternion of the PQ estimated by the EKF is presented. A comparative between the 
     quaternion estimated by the EKF and the quaternion estimated by the simulation without the EKF will be presented in later sections.
     \begin{figure}[H]
         \centering
@@ -648,10 +648,10 @@ In addition, the performance of the EKF is analysed and compared with the perfor
 
     \item \textbf{EKF Performance}\\
     To assess the performance of the EKF, a performance campaign has been conducted. The campaign consists of 20 simulations using the same
-    initial state and orientation of the PocketQube. After each simulation the orientation of the PocketQube is extracted by means of the quaternion
-    describing the rotation from the Local Vertical Local Horizontal (LVLH) frame to the body frame. Finally that quaternion is used to calculate
+    initial state and orientation of the PQ. After each simulation the orientation of the PQ is extracted by means of the quaternion
+    describing the rotation from the LVLH frame to the body frame. Finally that quaternion is used to calculate
     the mean square error (MSE) of each quaternion component, so that the performance of the EKF can be evaluated. In order to compute the MSE, the ideal
-    quaternion used is the quaternion [1, 0, 0, 0], which represents the ideal attitude of the PocketQube in the Nadir Pointing mode.\\
+    quaternion used is the quaternion [1, 0, 0, 0], which represents the ideal attitude of the PQ in the Nadir Pointing mode.\\
     
     The first plot shows the quaternion evolution for the 20 simulations, where it can be observed that in overall, all the quaternion components
     manage to converge aproximately to the ideal quaternion.
