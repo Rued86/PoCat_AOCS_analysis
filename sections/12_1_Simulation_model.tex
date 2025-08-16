@@ -1,12 +1,13 @@
 \input{res/tables/tables.tex}
 \section{Simulation model}
-To assist the Attitude and Orbit Control System (AOCS) design, verification and validation, a simulation model using mathlab code has been used. The
+To verify the Attitude and Orbit Control System (AOCS) design, verification and validation, a simulation model using mathlab code has been used. The
 simulation is based on the Princeton Toolbox (PT) \cite{PrincetonToolbox}, which contains a set of functions and 
 simulations initially created for CubeSats, that has been adapted to the PocketQube (PQ).
 
 \subsection{PocketQube Model}
-The mission is formed by two PQs, one using an L-band Radiometer and the other using a K-band radiometer. To model the PQ, a 3 dimensional cube has
-been used, shown in \textit{Figure \ref{fig:PQmodel}}. This cube has the same dimensions as a PQ 5x5x5 cm$^2$ and the same mass as the PQs. Additionally, to apply the inertia of the PQs, the 
+
+To model the PQs of the mission, a 3 dimensional cube has
+been used as a geometric representation, as shown in \textit{Figure \ref{fig:PQmodel}}. This cube has the same dimensions as a PQ 5x5x5 cm$^2$ and the same mass as the PQs. Additionally, as the mission is formed by two PQs, in order to create them as close as possible to the reality the 
 inertia matrix is taken into account in the simulation.\vspace{0.2em}
 
 \noindent The satellites will be simulated in two different configurations, on the one hand in stowed configuration (without the anntennas deployed) and on the other
@@ -18,6 +19,9 @@ stowed.
         \caption{PQ 3D model}
         \label{fig:PQmodel}
     \end{figure}
+
+\subsection{Software and hardware delays}
+In the report a simulation with a negligible delay is presented to show the performance of the Nadir pointing. Additionally, another simulation using a delay of 1 AOCS cycle is also presented so that the performance in a worse case scenario can be observed. This delay means that once the measurements of the sensors are obtained, they are not used until the next AOCS cycle, which in the case of the simulation is 1 second. 
 
 \subsection{Environmental model and asumptions}
 
@@ -79,7 +83,7 @@ stowed.
 The following environmental models are used in the simulation:
 \begin{itemize}
     \item \textbf{Earth's magnetic field model \cite{Tilted_Dipole}:} The Earth's magnetic field model used in the simulation is based
-    on the Tilted dipole mode, which includes the effect of the dipole motion of the Earth.
+    on the Tilted dipole mode, which includes the effect of the dipole motion of the Earth (the applied error of the model is also introduce).
     \item \textbf{Aerodynamic Drag model:} The simulation uses an aerodinamic drag model based on the Jacchia's 1970 model
     \cite{J70_atmosphere}. 
     \item \textbf{Radiation Pressure model:} The simulation includes the solar radiation pressure, the earth radiation
@@ -278,13 +282,6 @@ The list below presents the different assumptions and aspects considered to perf
     \label{fig:RadiationTorques}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.48\linewidth]{res/img/Nadir_no_EKF/Magnetic Torques.png}
-    \caption{Magnetic Torques}
-    \label{fig:Magnetic torque}
-\end{figure}
-
     \item \textbf{Sensor measurements}\\
     In this section the measures taken from the simulated sensors are presented. The sensors
     follow the model presented in the previous sections of the document. Firstly the measurements
@@ -454,7 +451,7 @@ The list below presents the different assumptions and aspects considered to perf
 
 \end{itemize}
 
-\noindent In the picture below can be observed the angle between the nadir vector and the +Z unitary vector of the body frame. 
+\noindent In the picture below can be observed the APE of the Payload, which is the angle between the nadir vector and the +Y unitary vector of the body frame.
 Additionally, there is a line marking the 20º limit, which is the requirement of the Nadir Pointing mode. 
 Overall, the results show that the requirement is not met, therefore, a solution to improve the performance has to be implemented.
 The proposed solution is the implementation of an Extended Kalman Filter (EKF) to improve the attitude estimation, which will be presented in the next section.
@@ -466,6 +463,17 @@ The proposed solution is the implementation of an Extended Kalman Filter (EKF) t
     \label{fig:AngleNadirY}
 \end{figure}
 
+If the delay of 1 cycle of AOCS is implemented, the final result of the APE is shown below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{res/img/Nadir_no_EKF/APE delay.png}
+    \caption{Angle between nadir and +Y with delay}
+    \label{fig:AngleNadirYdelay}
+\end{figure}
+
+\noindent As can be seen the Nadir poiting with the delay of 1 AOCS cycle does also not meet the requirement of the APE so the implementation of the EKF is compulsory.
+
 \subsubsection{Nadir pointing using an Extended Kalman Filter (EKF) for attitude determination}
 In consequence of the results obtained in the previous seconds, the proposed solution to achieve
 the requirement of the Payload is to implement an EKF to improve the attitude estimation. 
@@ -473,7 +481,7 @@ The EKF used is the one proposed in \cite{EKF}. This proposed EKF uses the manif
 the attitude quaternion, the covarianve matrix of the state and the angular velocity. Additionally, it uses measurements
 from the gyroscope and the magnetometer to update the state of the EKF.\\
 
-\noindent In this section the results of the simulation of the Nadir Pointing using the EKF are presented.
+\noindent In this section the results of the simulation of the Nadir Pointing using the EKF are presented, including in all the results a delay of 1 AOCS cycle.
 In addition, the performance of the EKF is analysed and compared with the performance of the Nadir Pointing mode without the EKF.
 
 \begin{itemize}
@@ -646,6 +654,21 @@ In addition, the performance of the EKF is analysed and compared with the perfor
         \caption{LVLH To Body Quaternion}
     \end{figure}
 
+The picture below shows the APE of the nadir pointing, as can be observed the performance increases significantly and now it is compliant with the requirement set by the payload.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{res/img/Nadir_EKF/Simulations/Angle between nadir and +Y.png}
+        \caption{LVLH To Body Quaternion}
+    \end{figure}
+
+In the picture below it can be observed the effect of the delay of 1 AOCS cycle in the APE of the nadir pointing. As can be seen, the performance is still compliant with the requirement set by the payload, but the time it needs to converge is longer than without the delay.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{res/img/Nadir_EKF/Simulations/Angle between nadir and +Y delays.png}
+        \caption{LVLH To Body Quaternion}
+    \end{figure}
     \item \textbf{EKF Performance}\\
     To assess the performance of the EKF, a performance campaign has been conducted. The campaign consists of 20 simulations using the same
     initial state and orientation of the PQ. After each simulation the orientation of the PQ is extracted by means of the quaternion
@@ -667,9 +690,8 @@ In addition, the performance of the EKF is analysed and compared with the perfor
     of the covariance matrix are also presented.
 
     In the first plot, the component $q_1$ of the quaternion is presented, which is the scalar component of the quaternion. In this case,
-    it can be observed that the variance is in most of the plot with a very aproximated value to the MSE. That means that the EKF in that
-    component is working extremely close the optimal estimator. It is good to take into account that as an EKF is being used, the fact of 
-    having to linearize the system makes complex to obtain an ideal optimal estimator (variance = MSE).  
+    it can be observed that overall the MSE is very low, which indicates that the EKF is able to estimate the scalar component of the quaternion in a very accurate way.
+     
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{res/img/Nadir_EKF/EKF_performance/performance q1.png}
